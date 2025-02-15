@@ -181,5 +181,5 @@ for i in range(7):
         ]
     sense.set_pixels(plant_states2[plant_stage2])
     plant_stage2+=1
-time.sleep(3)
+time.sleep(2)
 sense.clear()
