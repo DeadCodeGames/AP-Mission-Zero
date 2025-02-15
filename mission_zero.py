@@ -25,12 +25,25 @@ p = (247, 0, 185)#3
 gg = (0, 255, 136)#3
 f = (157, 0, 255)#3
 
+def get_background_color():
+    global bcg
+    temp = sense.get_temperature()
+    if temp < 1: 
+        bcg = (100, 149, 237)
+        return bcg
+    elif temp > 99:
+        bcg = (255, 140, 0)
+        return bcg
+    else:
+        bcg = (rgb.red, rgb.green, rgb.blue)
+        return bcg
+    
+
 sense.set_rotation(270)
 
 plant_stage = 0
 for i in range(8):
-    rgb = sense.color
-    bcg = (rgb.red, rgb.green, rgb.blue)
+    get_background_color()
     plant_states = [
     [bcg, bcg, bcg, bcg, bcg, bcg, bcg, bcg,
     bcg, bcg, bcg, bcg, bcg, bcg, bcg, bcg,
@@ -112,9 +125,8 @@ for i in range(8):
 sense.show_message("DeadCode", text_colour=(rgb.red, rgb.green, rgb.blue), back_colour=(255, 255, 255), scroll_speed=0.1)
 plant_stage2 = 0
 for i in range(7):
+    get_background_color()
     time.sleep(1)
-    rgb = sense.color
-    bcg = (rgb.red, rgb.green, rgb.blue)
     plant_states2 = [
         [bcg, bcg, bcg, bcg, bcg, bcg, bcg, bcg,
         bcg, bcg, bcg, bcg, bcg, bcg, bcg, bcg,
